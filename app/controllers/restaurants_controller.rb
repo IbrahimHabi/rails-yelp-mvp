@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit]
+  before_action :set_restaurant, only: %i[show edit]
 
   def index
     @restaurants = Restaurant.all
@@ -21,7 +23,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
+      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
     else
       render :new
     end
@@ -35,7 +37,7 @@ class RestaurantsController < ApplicationController
     end
   end
 
-# Action that the user can not do
+  # Action that the user can not do
   # def update
   #   @restaurant = Restaurant.find(params[:id])
   #   if @restaurant.update(restaurant_params)
